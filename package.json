@@ -30,9 +30,7 @@
   },
   "testling": {
     "files": [
-      "test/test.js",
-      "test/pack-fixture.js",
-      "test/fixture.js"
+      "test/index.js"
     ],
     "browsers": {
       "ie": [
