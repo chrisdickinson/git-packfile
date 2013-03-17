@@ -3,6 +3,9 @@
 read object data out of git packfiles, applying
 ofs/ref deltas and zlib decompression.
 
+[![Build Status](https://travis-ci.org/chrisdickinson/git-packfile.png)](https://travis-ci.org/chrisdickinson/git-packfile)
+[![browser support](http://ci.testling.com/chrisdickinson/git-packfile.png)](http://ci.testling.com/chrisdickinson/git-packfile)
+
 ```javascript
 var packfile = require('git-packfile')
   , idxparse = require('git-packidx-parser')
