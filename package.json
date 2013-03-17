@@ -1,6 +1,6 @@
 {
   "name": "git-packfile",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "git packfile library for looking up and decoding git objects",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,9 @@
     "git-apply-delta": "0.0.3",
     "through": "~2.2.7"
   },
-  "browser": { "./inflate.js": "./inflate-shim.js" },
+  "browser": {
+    "./inflate.js": "./inflate-shim.js"
+  },
   "devDependencies": {
     "tape": "~0.3.0",
     "git-packidx-parser": "0.0.2"
