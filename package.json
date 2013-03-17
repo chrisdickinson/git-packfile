@@ -1,0 +1,29 @@
+{
+  "name": "git-packfile",
+  "version": "0.0.0",
+  "description": "git packfile library for looking up and decoding git objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chrisdickinson/git-packfile.js"
+  },
+  "keywords": [
+    "git",
+    "packfile"
+  ],
+  "author": "Chris Dickinson <chris@neversaw.us>",
+  "license": "MIT",
+  "gitHead": "8de80a60fa83c1ee944f51c9dfbb6622c5798279",
+  "dependencies": {
+    "git-apply-delta": "0.0.3",
+    "through": "~2.2.7"
+  },
+  "browser": { "./inflate.js": "./inflate-shim.js" },
+  "devDependencies": {
+    "tape": "~0.3.0",
+    "git-packidx-parser": "0.0.2"
+  }
+}
