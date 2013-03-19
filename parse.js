@@ -18,8 +18,8 @@ function parse(packfile, idx_offset, next_idx_offset) {
     , state = STATE_INITIAL_BYTE
     , payload_accum = []
     , expanded_size = []
-    , expanded_size_value
     , payload_size = 0
+    , size
     , type
 
   return stream
@@ -31,19 +31,27 @@ function parse(packfile, idx_offset, next_idx_offset) {
 
     if(state === STATE_INITIAL_BYTE) {
       byt = buf.readUInt8(0)
-      type = (byt & ~0x80) >> 4
+      type = byt >> 4 & 7
       expanded_size[expanded_size.length] = byt & 0x0F
       ++offset
-      state = STATE_EXPANDED_SIZE
+
+      if(byt & 0x80) {
+        state = STATE_EXPANDED_SIZE
+      } else {
+        size = byt & 0x0F
+        state = STATE_PAYLOAD
+      }
     }
 
     if(state === STATE_EXPANDED_SIZE && offset < len) {
+      var plain =[]
       do {
         byt = buf.readUInt8(offset++)
-        expanded_size[expanded_size.length] = byt & ~0x80
+        plain[plain.length] = byt
+        expanded_size[expanded_size.length] = byt & 0x7F
       } while(offset < len && byt & 0x80)
 
-      if(offset === len) {
+      if(offset === len && (byt & 0x80)) {
         return
       }
 
@@ -80,7 +88,7 @@ function parse(packfile, idx_offset, next_idx_offset) {
     } else if(type === REF_DELTA) {
       do_ref_delta()
     } else {
-      return stream.emit('error', new Error('unknown object type:' + type))
+      return stream.emit('error', new Error('unknown object type: ' + type))
     }
   }
 
