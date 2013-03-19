@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/chrisdickinson/git-packfile.js"
+    "url": "git://github.com/chrisdickinson/git-packfile.git"
   },
   "keywords": [
     "git",
