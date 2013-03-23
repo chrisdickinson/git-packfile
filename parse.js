@@ -171,14 +171,9 @@ function parse(packfile, idx_offset, next_idx_offset) {
     }
 
     function ontarget(err, target) {
-      var idx = 0
-        , out
+      var out
 
-      while(target.data.readUInt8(idx++) !== 0) {
-        //
-      }
-
-      out = apply_delta(delta, target.data.slice(idx + 1))
+      out = apply_delta(delta, target.data)
       stream.queue({
           type: target.type
         , data: out
