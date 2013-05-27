@@ -18,7 +18,7 @@
   "license": "MIT",
   "gitHead": "8de80a60fa83c1ee944f51c9dfbb6622c5798279",
   "dependencies": {
-    "git-apply-delta": "0.0.3",
+    "git-apply-delta": "0.0.7",
     "through": "~2.2.7"
   },
   "browser": {
