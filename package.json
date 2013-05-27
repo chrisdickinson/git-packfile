@@ -1,6 +1,6 @@
 {
   "name": "git-packfile",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "git packfile library for looking up and decoding git objects",
   "main": "index.js",
   "scripts": {
