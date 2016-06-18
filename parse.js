@@ -81,7 +81,7 @@ function parse(packfile, idx_offset, next_idx_offset) {
       return stream.emit('error', new Error('unexpected end of object'))
     }
 
-    if(type < 4) {
+    if(type <= 4) {
       do_inflate()
     } else if(type === OFS_DELTA) {
       do_ofs_delta()
@@ -120,7 +120,7 @@ function parse(packfile, idx_offset, next_idx_offset) {
       offset += _byte & 0x7F
     }
 
-    // TODO: this doesn't take 
+    // TODO: this doesn't take
     // big offsets into account.
     // should it?
     return packfile.read(idx_offset - offset, idx_offset, onread)
@@ -136,7 +136,7 @@ function parse(packfile, idx_offset, next_idx_offset) {
       target_object = _target_object
 
       inflate(buf.slice(idx), ondelta)
-    } 
+    }
 
     function ondelta(err, delta) {
       var new_data = apply_delta(delta, target_object.data)
@@ -167,7 +167,7 @@ function parse(packfile, idx_offset, next_idx_offset) {
       }
 
       delta = _delta
-      packfile._find_raw(target_oid, ontarget) 
+      packfile._find_raw(target_oid, ontarget)
     }
 
     function ontarget(err, target) {
@@ -180,5 +180,5 @@ function parse(packfile, idx_offset, next_idx_offset) {
       })
       stream.queue(null)
     }
-  } 
+  }
 }
